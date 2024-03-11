@@ -25,53 +25,53 @@
     <p>This code uses the WIRE.h and ASOLED.h libraries.</p>
     <p>All code:</p><br>
     <code>
-                  String Status = "mainmodStatus";
+                  String Status = "mainmodStatus";\n
             
-            #include <Wire.h>
-            #include "ASOLED.h"
+            #include <Wire.h>\n
+            #include "ASOLED.h"\n
             
             
-            void CLS() {
-              LD.init();
-              LD.clearDisplay();
+            void CLS() {\n
+              LD.init();\n
+              LD.clearDisplay();\n
             }
             
-            void mainmod() {
-              LD.printString_6x8("Hello, World!", 0, 0);
-              if (digitalRead(2) == 0) {
-                CLS();
-                Status = "byeStatus";
-              }
+            void mainmod() {\n
+              LD.printString_6x8("Hello, World!", 0, 0);\n
+              if (digitalRead(2) == 0) {\n
+                CLS();\n
+                Status = "byeStatus";\n
+              }\n
+            }\n
+            
+            void bye() {\n
+              LD.printString_6x8("Goodbye, World!", 0, 0);\n
+              if (digitalRead(3) == 0) {\n
+                CLS();\n
+                Status = "mainmodStatus";\n
+              }\n
+            }\n
+            
+            
+            void setup() {\n
+              LD.init();\n
+             LD.clearDisplay();\n
+            
+                mainmod();\n
+            
+              pinMode(2, INPUT_PULLUP);\n
+              pinMode(3, INPUT_PULLUP);\n
             }
             
-            void bye() {
-              LD.printString_6x8("Goodbye, World!", 0, 0);
-              if (digitalRead(3) == 0) {
-                CLS();
-                Status = "mainmodStatus";
-              }
-            }
-            
-            
-            void setup() {
-              LD.init();
-             LD.clearDisplay();
-            
-                mainmod();
-            
-              pinMode(2, INPUT_PULLUP);
-              pinMode(3, INPUT_PULLUP);
-            }
-            
-            void loop() {
-                if (Status == "mainmodStatus") {
-                  mainmod();
+            void loop() {\n
+                if (Status == "mainmodStatus") {\n
+                  mainmod();\n
                 }
-                if (Status == "byeStatus") {
-                  bye();
-                }
+                if (Status == "byeStatus") {\n
+                  bye();\n
+                }\n
             
-            }
+            }\n
     </code>
     <hr>
     <center>DMI, 2019-2024</center>
